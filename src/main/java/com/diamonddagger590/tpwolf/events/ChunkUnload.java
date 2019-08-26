@@ -36,16 +36,16 @@ public class ChunkUnload implements Listener {
             }
           }
         }
-        else if(en.getType().equals(EntityType.OCELOT)){
-          Ocelot ocelot = (Ocelot) en;
-          if(!ocelot.isSitting() && ocelot.isTamed()){
-            final AnimalTamer owner = ocelot.getOwner();
+        else if(en.getType().equals(EntityType.CAT)){
+          Cat cat = (Cat) en;
+          if(!cat.isSitting() && cat.isTamed()){
+            final AnimalTamer owner = cat.getOwner();
             final OfflinePlayer p = Bukkit.getOfflinePlayer(owner.getUniqueId());
             if(p != null){
               if(p.hasPlayedBefore() && p.isOnline()){
                 final Player player = p.getPlayer();
                 final Location pLoc = player.getLocation();
-                ocelot.teleport(pLoc);
+                cat.teleport(pLoc);
               }
             }
           }
