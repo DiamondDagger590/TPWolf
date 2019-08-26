@@ -50,6 +50,20 @@ public class ChunkUnload implements Listener {
             }
           }
         }
+        else if(en.getType().equals(EntityType.PARROT)){
+          Parrot parrot = (Parrot) en;
+          if(!parrot.isSitting() && parrot.isTamed()){
+            final AnimalTamer owner = parrot.getOwner();
+            final OfflinePlayer p = Bukkit.getOfflinePlayer(owner.getUniqueId());
+            if(p != null){
+              if(p.hasPlayedBefore() && p.isOnline()){
+                final Player player = p.getPlayer();
+                final Location pLoc = player.getLocation();
+                parrot.teleport(pLoc);
+              }
+            }
+          }
+        }
       }
     }
   }
